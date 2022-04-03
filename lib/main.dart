@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: const HomePage(),
-      routes:  {
+      routes: {
         PageRoutes.home: (context) => const HomePage(),
         PageRoutes.providerPath: (context) => const ProviderPathPage(),
         PageRoutes.connectivity: (context) => const ConnectivityPage(),

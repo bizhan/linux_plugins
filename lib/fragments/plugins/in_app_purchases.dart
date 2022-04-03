@@ -51,12 +51,12 @@ class _InAppPurchasesState extends State<InAppPurchasesPage> {
         _inAppPurchase.purchaseStream;
     _subscription =
         purchaseUpdated.listen((List<PurchaseDetails> purchaseDetailsList) {
-      _listenToPurchaseUpdated(purchaseDetailsList);
-    }, onDone: () {
-      _subscription.cancel();
-    }, onError: (Object error) {
-      // handle error here.
-    });
+          _listenToPurchaseUpdated(purchaseDetailsList);
+        }, onDone: () {
+          _subscription.cancel();
+        }, onError: (Object error) {
+          // handle error here.
+        });
     initStoreInfo();
     super.initState();
   }
@@ -78,13 +78,13 @@ class _InAppPurchasesState extends State<InAppPurchasesPage> {
 
     if (Platform.isIOS) {
       final InAppPurchaseStoreKitPlatformAddition iosPlatformAddition =
-          _inAppPurchase
-              .getPlatformAddition<InAppPurchaseStoreKitPlatformAddition>();
+      _inAppPurchase
+          .getPlatformAddition<InAppPurchaseStoreKitPlatformAddition>();
       await iosPlatformAddition.setDelegate(ExamplePaymentQueueDelegate());
     }
 
     final ProductDetailsResponse productDetailResponse =
-        await _inAppPurchase.queryProductDetails(_kProductIds.toSet());
+    await _inAppPurchase.queryProductDetails(_kProductIds.toSet());
     if (productDetailResponse.error != null) {
       setState(() {
         _queryProductError = productDetailResponse.error!.message;
@@ -128,8 +128,8 @@ class _InAppPurchasesState extends State<InAppPurchasesPage> {
   void dispose() {
     if (Platform.isIOS) {
       final InAppPurchaseStoreKitPlatformAddition iosPlatformAddition =
-          _inAppPurchase
-              .getPlatformAddition<InAppPurchaseStoreKitPlatformAddition>();
+      _inAppPurchase
+          .getPlatformAddition<InAppPurchaseStoreKitPlatformAddition>();
       iosPlatformAddition.setDelegate(null);
     }
     _subscription.cancel();
@@ -189,7 +189,9 @@ class _InAppPurchasesState extends State<InAppPurchasesPage> {
     }
     final Widget storeHeader = ListTile(
       leading: Icon(_isAvailable ? Icons.check : Icons.block,
-          color: _isAvailable ? Colors.green : ThemeData.light().errorColor),
+          color: _isAvailable ? Colors.green : ThemeData
+              .light()
+              .errorColor),
       title: Text(
           'The store is ' + (_isAvailable ? 'available' : 'unavailable') + '.'),
     );
@@ -200,7 +202,9 @@ class _InAppPurchasesState extends State<InAppPurchasesPage> {
         const Divider(),
         ListTile(
           title: Text('Not connected',
-              style: TextStyle(color: ThemeData.light().errorColor)),
+              style: TextStyle(color: ThemeData
+                  .light()
+                  .errorColor)),
           subtitle: const Text(
               'Unable to connect to the payments processor. Has this app been configured correctly? See the example README for instructions.'),
         ),
@@ -224,7 +228,9 @@ class _InAppPurchasesState extends State<InAppPurchasesPage> {
     if (_notFoundIds.isNotEmpty) {
       productList.add(ListTile(
           title: Text('[${_notFoundIds.join(", ")}] not found',
-              style: TextStyle(color: ThemeData.light().errorColor)),
+              style: TextStyle(color: ThemeData
+                  .light()
+                  .errorColor)),
           subtitle: const Text(
               'This app needs special configuration to run. Please see example/README.md for instructions.')));
     }
@@ -233,15 +239,16 @@ class _InAppPurchasesState extends State<InAppPurchasesPage> {
     // In your app you should always verify the purchase data using the `verificationData` inside the [PurchaseDetails] object before trusting it.
     // We recommend that you use your own server to verify the purchase data.
     final Map<String, PurchaseDetails> purchases =
-        Map<String, PurchaseDetails>.fromEntries(
-            _purchases.map((PurchaseDetails purchase) {
-      if (purchase.pendingCompletePurchase) {
-        _inAppPurchase.completePurchase(purchase);
-      }
-      return MapEntry<String, PurchaseDetails>(purchase.productID, purchase);
-    }));
+    Map<String, PurchaseDetails>.fromEntries(
+        _purchases.map((PurchaseDetails purchase) {
+          if (purchase.pendingCompletePurchase) {
+            _inAppPurchase.completePurchase(purchase);
+          }
+          return MapEntry<String, PurchaseDetails>(
+              purchase.productID, purchase);
+        }));
     productList.addAll(_products.map(
-      (ProductDetails productDetails) {
+          (ProductDetails productDetails) {
         final PurchaseDetails? previousPurchase = purchases[productDetails.id];
         return ListTile(
             title: Text(
@@ -252,52 +259,52 @@ class _InAppPurchasesState extends State<InAppPurchasesPage> {
             ),
             trailing: previousPurchase != null
                 ? IconButton(
-                    onPressed: () => confirmPriceChange(context),
-                    icon: const Icon(Icons.upgrade))
+                onPressed: () => confirmPriceChange(context),
+                icon: const Icon(Icons.upgrade))
                 : TextButton(
-                    child: Text(productDetails.price),
-                    style: TextButton.styleFrom(
-                      backgroundColor: Colors.green[800],
-                      primary: Colors.white,
-                    ),
-                    onPressed: () {
-                      late PurchaseParam purchaseParam;
+              child: Text(productDetails.price),
+              style: TextButton.styleFrom(
+                backgroundColor: Colors.green[800],
+                primary: Colors.white,
+              ),
+              onPressed: () {
+                late PurchaseParam purchaseParam;
 
-                      if (Platform.isAndroid) {
-                        // NOTE: If you are making a subscription purchase/upgrade/downgrade, we recommend you to
-                        // verify the latest status of you your subscription by using server side receipt validation
-                        // and update the UI accordingly. The subscription purchase status shown
-                        // inside the app may not be accurate.
-                        final GooglePlayPurchaseDetails? oldSubscription =
-                            _getOldSubscription(productDetails, purchases);
+                if (Platform.isAndroid) {
+                  // NOTE: If you are making a subscription purchase/upgrade/downgrade, we recommend you to
+                  // verify the latest status of you your subscription by using server side receipt validation
+                  // and update the UI accordingly. The subscription purchase status shown
+                  // inside the app may not be accurate.
+                  final GooglePlayPurchaseDetails? oldSubscription =
+                  _getOldSubscription(productDetails, purchases);
 
-                        purchaseParam = GooglePlayPurchaseParam(
-                            productDetails: productDetails,
-                            applicationUserName: null,
-                            changeSubscriptionParam: (oldSubscription != null)
-                                ? ChangeSubscriptionParam(
-                                    oldPurchaseDetails: oldSubscription,
-                                    prorationMode: ProrationMode
-                                        .immediateWithTimeProration,
-                                  )
-                                : null);
-                      } else {
-                        purchaseParam = PurchaseParam(
-                          productDetails: productDetails,
-                          applicationUserName: null,
-                        );
-                      }
+                  purchaseParam = GooglePlayPurchaseParam(
+                      productDetails: productDetails,
+                      applicationUserName: null,
+                      changeSubscriptionParam: (oldSubscription != null)
+                          ? ChangeSubscriptionParam(
+                        oldPurchaseDetails: oldSubscription,
+                        prorationMode: ProrationMode
+                            .immediateWithTimeProration,
+                      )
+                          : null);
+                } else {
+                  purchaseParam = PurchaseParam(
+                    productDetails: productDetails,
+                    applicationUserName: null,
+                  );
+                }
 
-                      if (productDetails.id == _kConsumableId) {
-                        _inAppPurchase.buyConsumable(
-                            purchaseParam: purchaseParam,
-                            autoConsume: _kAutoConsume || Platform.isIOS);
-                      } else {
-                        _inAppPurchase.buyNonConsumable(
-                            purchaseParam: purchaseParam);
-                      }
-                    },
-                  ));
+                if (productDetails.id == _kConsumableId) {
+                  _inAppPurchase.buyConsumable(
+                      purchaseParam: purchaseParam,
+                      autoConsume: _kAutoConsume || Platform.isIOS);
+                } else {
+                  _inAppPurchase.buyNonConsumable(
+                      purchaseParam: purchaseParam);
+                }
+              },
+            ));
       },
     ));
 
@@ -317,7 +324,7 @@ class _InAppPurchasesState extends State<InAppPurchasesPage> {
       return const Card();
     }
     const ListTile consumableHeader =
-        ListTile(title: Text('Purchased consumables'));
+    ListTile(title: Text('Purchased consumables'));
     final List<Widget> tokens = _consumables.map((String id) {
       return GridTile(
         child: IconButton(
@@ -333,15 +340,15 @@ class _InAppPurchasesState extends State<InAppPurchasesPage> {
     }).toList();
     return Card(
         child: Column(children: <Widget>[
-      consumableHeader,
-      const Divider(),
-      GridView.count(
-        crossAxisCount: 5,
-        children: tokens,
-        shrinkWrap: true,
-        padding: const EdgeInsets.all(16.0),
-      )
-    ]));
+          consumableHeader,
+          const Divider(),
+          GridView.count(
+            crossAxisCount: 5,
+            children: tokens,
+            shrinkWrap: true,
+            padding: const EdgeInsets.all(16.0),
+          )
+        ]));
   }
 
   Widget _buildRestoreButton() {
@@ -358,7 +365,9 @@ class _InAppPurchasesState extends State<InAppPurchasesPage> {
           TextButton(
             child: const Text('Restore purchases'),
             style: TextButton.styleFrom(
-              backgroundColor: Theme.of(context).primaryColor,
+              backgroundColor: Theme
+                  .of(context)
+                  .primaryColor,
               primary: Colors.white,
             ),
             onPressed: () => _inAppPurchase.restorePurchases(),
@@ -436,8 +445,8 @@ class _InAppPurchasesState extends State<InAppPurchasesPage> {
         if (Platform.isAndroid) {
           if (!_kAutoConsume && purchaseDetails.productID == _kConsumableId) {
             final InAppPurchaseAndroidPlatformAddition androidAddition =
-                _inAppPurchase.getPlatformAddition<
-                    InAppPurchaseAndroidPlatformAddition>();
+            _inAppPurchase.getPlatformAddition<
+                InAppPurchaseAndroidPlatformAddition>();
             await androidAddition.consumePurchase(purchaseDetails);
           }
         }
@@ -451,10 +460,10 @@ class _InAppPurchasesState extends State<InAppPurchasesPage> {
   Future<void> confirmPriceChange(BuildContext context) async {
     if (Platform.isAndroid) {
       final InAppPurchaseAndroidPlatformAddition androidAddition =
-          _inAppPurchase
-              .getPlatformAddition<InAppPurchaseAndroidPlatformAddition>();
+      _inAppPurchase
+          .getPlatformAddition<InAppPurchaseAndroidPlatformAddition>();
       final BillingResultWrapper priceChangeConfirmationResult =
-          await androidAddition.launchPriceChangeConfirmationFlow(
+      await androidAddition.launchPriceChangeConfirmationFlow(
         sku: 'purchaseId',
       );
       if (priceChangeConfirmationResult.responseCode == BillingResponse.ok) {
@@ -465,21 +474,22 @@ class _InAppPurchasesState extends State<InAppPurchasesPage> {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text(
             priceChangeConfirmationResult.debugMessage ??
-                'Price change failed with code ${priceChangeConfirmationResult.responseCode}',
+                'Price change failed with code ${priceChangeConfirmationResult
+                    .responseCode}',
           ),
         ));
       }
     }
     if (Platform.isIOS) {
       final InAppPurchaseStoreKitPlatformAddition iapStoreKitPlatformAddition =
-          _inAppPurchase
-              .getPlatformAddition<InAppPurchaseStoreKitPlatformAddition>();
+      _inAppPurchase
+          .getPlatformAddition<InAppPurchaseStoreKitPlatformAddition>();
       await iapStoreKitPlatformAddition.showPriceConsentIfNeeded();
     }
   }
 
-  GooglePlayPurchaseDetails? _getOldSubscription(
-      ProductDetails productDetails, Map<String, PurchaseDetails> purchases) {
+  GooglePlayPurchaseDetails? _getOldSubscription(ProductDetails productDetails,
+      Map<String, PurchaseDetails> purchases) {
     // This is just to demonstrate a subscription upgrade or downgrade.
     // This method assumes that you have only 2 subscriptions under a group, 'subscription_silver' & 'subscription_gold'.
     // The 'subscription_silver' subscription can be upgraded to 'subscription_gold' and
@@ -491,11 +501,11 @@ class _InAppPurchasesState extends State<InAppPurchasesPage> {
     if (productDetails.id == _kSilverSubscriptionId &&
         purchases[_kGoldSubscriptionId] != null) {
       oldSubscription =
-          purchases[_kGoldSubscriptionId]! as GooglePlayPurchaseDetails;
+      purchases[_kGoldSubscriptionId]! as GooglePlayPurchaseDetails;
     } else if (productDetails.id == _kGoldSubscriptionId &&
         purchases[_kSilverSubscriptionId] != null) {
       oldSubscription =
-          purchases[_kSilverSubscriptionId]! as GooglePlayPurchaseDetails;
+      purchases[_kSilverSubscriptionId]! as GooglePlayPurchaseDetails;
     }
     return oldSubscription;
   }
@@ -508,8 +518,8 @@ class _InAppPurchasesState extends State<InAppPurchasesPage> {
 /// needed to complete transactions.
 class ExamplePaymentQueueDelegate implements SKPaymentQueueDelegateWrapper {
   @override
-  bool shouldContinueTransaction(
-      SKPaymentTransactionWrapper transaction, SKStorefrontWrapper storefront) {
+  bool shouldContinueTransaction(SKPaymentTransactionWrapper transaction,
+      SKStorefrontWrapper storefront) {
     return true;
   }
 

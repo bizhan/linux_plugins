@@ -33,8 +33,8 @@ class _PathProviderState extends State<PathProvider> {
     });
   }
 
-  Widget _buildDirectory(
-      BuildContext context, AsyncSnapshot<Directory?> snapshot) {
+  Widget _buildDirectory(BuildContext context,
+      AsyncSnapshot<Directory?> snapshot) {
     Text text = const Text('');
     if (snapshot.connectionState == ConnectionState.done) {
       if (snapshot.hasError) {
@@ -48,15 +48,15 @@ class _PathProviderState extends State<PathProvider> {
     return Padding(padding: const EdgeInsets.all(16.0), child: text);
   }
 
-  Widget _buildDirectories(
-      BuildContext context, AsyncSnapshot<List<Directory>?> snapshot) {
+  Widget _buildDirectories(BuildContext context,
+      AsyncSnapshot<List<Directory>?> snapshot) {
     Text text = const Text('');
     if (snapshot.connectionState == ConnectionState.done) {
       if (snapshot.hasError) {
         text = Text('Error: ${snapshot.error}');
       } else if (snapshot.hasData) {
         final String combined =
-            snapshot.data!.map((Directory d) => d.path).join(', ');
+        snapshot.data!.map((Directory d) => d.path).join(', ');
         text = Text('paths: $combined');
       } else {
         text = const Text('path unavailable');
@@ -178,7 +178,7 @@ class _PathProviderState extends State<PathProvider> {
                           : 'Get Application Library Directory',
                     ),
                     onPressed:
-                        Platform.isAndroid ? null : _requestAppLibraryDirectory,
+                    Platform.isAndroid ? null : _requestAppLibraryDirectory,
                   ),
                 ),
                 FutureBuilder<Directory?>(
@@ -221,10 +221,10 @@ class _PathProviderState extends State<PathProvider> {
                     onPressed: !Platform.isAndroid
                         ? null
                         : () {
-                            _requestExternalStorageDirectories(
-                              StorageDirectory.music,
-                            );
-                          },
+                      _requestExternalStorageDirectories(
+                        StorageDirectory.music,
+                      );
+                    },
                   ),
                 ),
                 FutureBuilder<List<Directory>?>(

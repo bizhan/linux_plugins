@@ -56,17 +56,18 @@ class _BatteryPlusState extends State<BatteryPlusPage> {
                 // ignore: unawaited_futures
                 showDialog<void>(
                   context: context,
-                  builder: (_) => AlertDialog(
-                    content: Text('Battery: $batteryLevel%'),
-                    actions: <Widget>[
-                      TextButton(
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                        child: const Text('OK'),
-                      )
-                    ],
-                  ),
+                  builder: (_) =>
+                      AlertDialog(
+                        content: Text('Battery: $batteryLevel%'),
+                        actions: <Widget>[
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: const Text('OK'),
+                          )
+                        ],
+                      ),
                 );
               },
               child: const Text('Get battery level'),
@@ -77,17 +78,19 @@ class _BatteryPlusState extends State<BatteryPlusPage> {
                   // ignore: unawaited_futures
                   showDialog<void>(
                     context: context,
-                    builder: (_) => AlertDialog(
-                      content: Text('Is on low power mode: $isInPowerSaveMode'),
-                      actions: <Widget>[
-                        TextButton(
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                          child: const Text('OK'),
-                        )
-                      ],
-                    ),
+                    builder: (_) =>
+                        AlertDialog(
+                          content: Text(
+                              'Is on low power mode: $isInPowerSaveMode'),
+                          actions: <Widget>[
+                            TextButton(
+                              onPressed: () {
+                                Navigator.pop(context);
+                              },
+                              child: const Text('OK'),
+                            )
+                          ],
+                        ),
                   );
                 },
                 child: const Text('Is on low power mode'))

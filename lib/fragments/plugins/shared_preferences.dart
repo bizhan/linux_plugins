@@ -58,8 +58,10 @@ class _SharedPreferencesState extends State<SharedPreferencesPage> {
                       return Text('Error: ${snapshot.error}');
                     } else {
                       return Text(
-                        'Button tapped ${snapshot.data} time${snapshot.data == 1 ? '' : 's'}.\n\n'
-                        'This should persist across restarts.',
+                        'Button tapped ${snapshot.data} time${snapshot.data == 1
+                            ? ''
+                            : 's'}.\n\n'
+                            'This should persist across restarts.',
                       );
                     }
                 }

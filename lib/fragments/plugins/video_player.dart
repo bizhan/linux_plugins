@@ -11,7 +11,8 @@ import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
 class VideoPlayerPluginPage extends StatefulWidget {
-  const VideoPlayerPluginPage({Key? key, required this.title}) : super(key: key);
+  const VideoPlayerPluginPage({Key? key, required this.title})
+      : super(key: key);
 
   final String title;
 
@@ -81,22 +82,22 @@ class _ButterFlyAssetVideoInList extends StatelessWidget {
         const _ExampleCard(title: 'Item g'),
         Card(
             child: Column(children: <Widget>[
-          Column(
-            children: <Widget>[
-              const ListTile(
-                leading: Icon(Icons.cake),
-                title: Text('Video video'),
+              Column(
+                children: <Widget>[
+                  const ListTile(
+                    leading: Icon(Icons.cake),
+                    title: Text('Video video'),
+                  ),
+                  Stack(
+                      alignment: FractionalOffset.bottomRight +
+                          const FractionalOffset(-0.1, -0.1),
+                      children: <Widget>[
+                        _ButterFlyAssetVideo(),
+                        Image.asset('assets/flutter-mark-square-64.png'),
+                      ]),
+                ],
               ),
-              Stack(
-                  alignment: FractionalOffset.bottomRight +
-                      const FractionalOffset(-0.1, -0.1),
-                  children: <Widget>[
-                    _ButterFlyAssetVideo(),
-                    Image.asset('assets/flutter-mark-square-64.png'),
-                  ]),
-            ],
-          ),
-        ])),
+            ])),
         const _ExampleCard(title: 'Item h'),
         const _ExampleCard(title: 'Item i'),
         const _ExampleCard(title: 'Item j'),
@@ -304,16 +305,16 @@ class _ControlsOverlay extends StatelessWidget {
           child: controller.value.isPlaying
               ? const SizedBox.shrink()
               : Container(
-                  color: Colors.black26,
-                  child: const Center(
-                    child: Icon(
-                      Icons.play_arrow,
-                      color: Colors.white,
-                      size: 100.0,
-                      semanticLabel: 'Play',
-                    ),
-                  ),
-                ),
+            color: Colors.black26,
+            child: const Center(
+              child: Icon(
+                Icons.play_arrow,
+                color: Colors.white,
+                size: 100.0,
+                semanticLabel: 'Play',
+              ),
+            ),
+          ),
         ),
         GestureDetector(
           onTap: () {
