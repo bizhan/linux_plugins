@@ -174,25 +174,7 @@ class _DeviceInfoPlusState extends State<DeviceInfoPlusPage> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text(
-            kIsWeb
-                ? 'Web Browser info'
-                : Platform.isAndroid
-                ? 'Android Device Info'
-                : Platform.isIOS
-                ? 'iOS Device Info'
-                : Platform.isLinux
-                ? 'Linux Device Info'
-                : Platform.isMacOS
-                ? 'MacOS Device Info'
-                : Platform.isWindows
-                ? 'Windows Device Info'
-                : '',
-          ),
-        ),
+    return Scaffold(
         body: ListView(
           children: _deviceData.keys.map(
                 (String property) {
@@ -222,7 +204,6 @@ class _DeviceInfoPlusState extends State<DeviceInfoPlusPage> {
             },
           ).toList(),
         ),
-      ),
     );
   }
 }

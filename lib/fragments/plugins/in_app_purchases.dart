@@ -171,15 +171,13 @@ class _InAppPurchasesState extends State<InAppPurchasesPage> {
       );
     }
 
-    return MaterialApp(
-      home: Scaffold(
+    return Scaffold(
         appBar: AppBar(
           title: const Text('IAP Example'),
         ),
         body: Stack(
           children: stack,
         ),
-      ),
     );
   }
 

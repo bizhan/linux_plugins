@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:linux_plugins/fragments/plus_plugins_page.dart';
 import 'fragments/home_page.dart';
-import 'fragments/provider_path_page.dart';
-import 'fragments/connectivity_page.dart';
+import 'fragments/misc_page.dart';
+import 'fragments/plus_plugins_page.dart';
 import 'fragments/video_player_page.dart';
 import 'fragments/serialport_page.dart';
 import 'routes/page_route.dart';
@@ -23,8 +24,8 @@ class MyApp extends StatelessWidget {
       home: const HomePage(),
       routes: {
         PageRoutes.home: (context) => const HomePage(),
-        PageRoutes.providerPath: (context) => const ProviderPathPage(),
-        PageRoutes.connectivity: (context) => const ConnectivityPage(),
+        PageRoutes.misc: (context) => const MiscPage(),
+        PageRoutes.plusPlugins: (context) => const PlusPluginsPage(),
         PageRoutes.videoPlayer: (context) => const VideoPlayerPage(),
         PageRoutes.serialport: (context) => const SerialPortPage(),
       },

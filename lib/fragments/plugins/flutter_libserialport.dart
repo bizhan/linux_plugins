@@ -45,11 +45,7 @@ class _FlutterLibSerialPortState extends State<FlutterLibSerialPort> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('libserialport example'),
-        ),
+    return Scaffold(
         body: Scrollbar(
           child: ListView(
             children: [
@@ -79,7 +75,6 @@ class _FlutterLibSerialPortState extends State<FlutterLibSerialPort> {
           child: const Icon(Icons.refresh),
           onPressed: initPorts,
         ),
-      ),
     );
   }
 }

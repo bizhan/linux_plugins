@@ -119,9 +119,6 @@ class _UrlLauncherState extends State<UrlLauncherPage> {
     // because the assumption is that every device can launch a web URL.
     const String toLaunch = 'https://www.cylog.org/headers/';
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
       body: ListView(
         children: <Widget>[
           Column(

@@ -22,17 +22,17 @@ class NavigationDrawer extends StatelessWidget {
           const Divider(),
           createDrawerBodyItem(
             icon: Icons.directions,
-            text: 'Provider Path',
+            text: 'Misc',
             onTap: () =>
                 Navigator.pushReplacementNamed(
-                    context, PageRoutes.providerPath),
+                    context, PageRoutes.misc),
           ),
           createDrawerBodyItem(
             icon: Icons.event_note,
-            text: 'Connectivity',
+            text: 'Plus Plugins',
             onTap: () =>
                 Navigator.pushReplacementNamed(
-                    context, PageRoutes.connectivity),
+                    context, PageRoutes.plusPlugins),
           ),
           createDrawerBodyItem(
             icon: Icons.video_stable,

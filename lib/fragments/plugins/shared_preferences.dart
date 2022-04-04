@@ -43,9 +43,6 @@ class _SharedPreferencesState extends State<SharedPreferencesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('SharedPreferences Demo'),
-      ),
       body: Center(
           child: FutureBuilder<int>(
               future: _counter,

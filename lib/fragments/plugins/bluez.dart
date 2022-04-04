@@ -1,12 +1,5 @@
-
-import 'dart:async';
-import 'dart:developer' as developer;
-import 'dart:io';
-
 import 'package:bluez/bluez.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 
 class BluezPage extends StatefulWidget {
@@ -18,9 +11,8 @@ class BluezPage extends StatefulWidget {
   _BluezState createState() => _BluezState();
 }
 
-
 class _BluezState extends State<BluezPage> {
-  var _client = BlueZClient();
+  final _client = BlueZClient();
 
   @override
   void initState() {
@@ -29,22 +21,12 @@ class _BluezState extends State<BluezPage> {
   }
 
   @override
-  void dispose() {
-    super.dispose();
-    _client.close();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Bluez Devices'),
-        ),
+    return Scaffold(
         body: Scrollbar(
           child: ListView(
             children: [
-              for (final device in _client.devices)
+              for (final device in _client.adapters)
                 Builder(builder: (context) {
                   return ExpansionTile(
                     title: Text(device.alias),
@@ -58,6 +40,12 @@ class _BluezState extends State<BluezPage> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _client.close();
   }
 }
 

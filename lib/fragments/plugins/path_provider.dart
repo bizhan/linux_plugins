@@ -10,8 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:path_provider/path_provider.dart';
 
 class PathProvider extends StatefulWidget {
-  const PathProvider({Key? key, required this.title}) : super(key: key);
-  final String title;
+  const PathProvider({Key? key}) : super(key: key);
 
   @override
   _PathProviderState createState() => _PathProviderState();
@@ -110,9 +109,6 @@ class _PathProviderState extends State<PathProvider> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
       body: Center(
         child: ListView(
           children: <Widget>[
