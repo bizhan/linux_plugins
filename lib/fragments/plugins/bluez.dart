@@ -1,14 +1,79 @@
+
+import 'dart:async';
+import 'dart:developer' as developer;
+import 'dart:io';
+
 import 'package:bluez/bluez.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
-/*
-void main() async {
-  var client = BlueZClient();
-  await client.connect();
 
-  for (var device in client.devices) {
-    print('Device ${device.address} ${device.alias}');
+class BluezPage extends StatefulWidget {
+  const BluezPage({Key? key, this.title}) : super(key: key);
+
+  final String? title;
+
+  @override
+  _BluezState createState() => _BluezState();
+}
+
+
+class _BluezState extends State<BluezPage> {
+  var _client = BlueZClient();
+
+  @override
+  void initState() {
+    super.initState();
+    _client.connect();
   }
 
-  await client.close();
+  @override
+  void dispose() {
+    super.dispose();
+    _client.close();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(
+          title: const Text('Bluez Devices'),
+        ),
+        body: Scrollbar(
+          child: ListView(
+            children: [
+              for (final device in _client.devices)
+                Builder(builder: (context) {
+                  return ExpansionTile(
+                    title: Text(device.alias),
+                    children: [
+                      CardListTile('Address', device.address),
+                    ],
+                  );
+                }),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
 }
-*/
+
+class CardListTile extends StatelessWidget {
+  final String name;
+  final String? value;
+
+  CardListTile(this.name, this.value);
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: ListTile(
+        title: Text(value ?? 'N/A'),
+        subtitle: Text(name),
+      ),
+    );
+  }
+}

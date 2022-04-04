@@ -13,7 +13,7 @@ Widget createDrawerHeader() {
         Positioned(
             bottom: 65.0,
             left: 62.5,
-            child: Text("Welcome to Linux",
+            child: Text("",
                 style: TextStyle(
                     color: Colors.white,
                     fontSize: 20.0,

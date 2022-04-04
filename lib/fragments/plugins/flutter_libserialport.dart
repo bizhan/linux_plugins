@@ -48,7 +48,7 @@ class _FlutterLibSerialPortState extends State<FlutterLibSerialPort> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Flutter Serial Port example'),
+          title: const Text('libserialport example'),
         ),
         body: Scrollbar(
           child: ListView(

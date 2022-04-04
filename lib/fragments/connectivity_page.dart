@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:linux_plugins/navigationDrawer/navigation_drawer.dart';
 //import 'package:linux_plugins/fragments/plugins/connectivity_plus.dart';
 import 'package:linux_plugins/fragments/plugins/network_info_plus.dart';
+//import 'package:linux_plugins/fragments/plugins/bluez.dart';
+
 
 class ConnectivityPage extends StatelessWidget {
   static const String routeName = '/connectivityPage';

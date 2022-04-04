@@ -43,7 +43,7 @@ class _BatteryPlusState extends State<BatteryPlusPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Plugin example app'),
+        title: const Text('Battery Plus'),
       ),
       body: Center(
         child: Column(
