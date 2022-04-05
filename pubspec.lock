@@ -289,7 +289,7 @@ packages:
     source: hosted
     version: "2.2.1"
   dbus:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: dbus
       url: "https://pub.dartlang.org"

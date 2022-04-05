@@ -1,6 +1,3 @@
-
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:fwupd/fwupd.dart';
 
@@ -44,7 +41,7 @@ class _FwupdPageState extends State<FwupdPage> {
             ElevatedButton(
               onPressed: () async {
                 final devices = await _client.getDevices();
-                for (var device in devices)
+                for (var device in devices) {
                   try {
                     final upgrades = await _client.getUpgrades(device.deviceId);
                     if (upgrades.isNotEmpty) {
@@ -56,13 +53,14 @@ class _FwupdPageState extends State<FwupdPage> {
                   } on FwupdException {
                     // No upgrades available
                   }
+                }
               },
               child: const Text('Get Upgrades'),
             ),
             ElevatedButton(
               onPressed: () async {
                 final devices = await _client.getDevices();
-                for (var device in devices)
+                for (var device in devices) {
                   try {
                     final downgrades = await _client.getDowngrades(device.deviceId);
                     if (downgrades.isNotEmpty) {
@@ -74,6 +72,7 @@ class _FwupdPageState extends State<FwupdPage> {
                   } on FwupdException {
                     // No downgrades available
                   }
+                }
               },
               child: const Text('Get Downgrades'),
             ),
@@ -99,8 +98,6 @@ class _FwupdPageState extends State<FwupdPage> {
   @override
   void dispose() {
     super.dispose();
-    if (_client != null) {
-      _client.close();
-    }
+    _client.close();
   }
 }

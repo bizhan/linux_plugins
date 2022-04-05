@@ -4,7 +4,7 @@ import 'fragments/home_page.dart';
 import 'fragments/misc_page.dart';
 import 'fragments/plus_plugins_page.dart';
 import 'fragments/video_player_page.dart';
-import 'fragments/serialport_page.dart';
+import 'fragments/linux_page.dart';
 import 'routes/page_route.dart';
 
 void main() => runApp(const MyApp());
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
         PageRoutes.misc: (context) => const MiscPage(),
         PageRoutes.plusPlugins: (context) => const PlusPluginsPage(),
         PageRoutes.videoPlayer: (context) => const VideoPlayerPage(),
-        PageRoutes.serialport: (context) => const SerialPortPage(),
+        PageRoutes.linux: (context) => const LinuxPage(),
       },
     );
   }

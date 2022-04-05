@@ -42,9 +42,9 @@ class NavigationDrawer extends StatelessWidget {
           ),
           createDrawerBodyItem(
             icon: Icons.notifications_active,
-            text: 'Serial',
+            text: 'Linux Specific',
             onTap: () =>
-                Navigator.pushReplacementNamed(context, PageRoutes.serialport),
+                Navigator.pushReplacementNamed(context, PageRoutes.linux),
           ),
           const Divider(),
           ListTile(
