@@ -144,9 +144,6 @@ class _GoogleSignInState extends State<GoogleSignInPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Google Sign In'),
-        ),
         body: ConstrainedBox(
           constraints: const BoxConstraints.expand(),
           child: _buildBody(),
