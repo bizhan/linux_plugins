@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:async';
 import 'package:dbus/dbus.dart';
 import 'package:packagekit/packagekit.dart';
 
@@ -63,20 +64,21 @@ class _PackagekitPageState extends State<PackagekitPage> {
             ),
             ElevatedButton(
               onPressed: () async {
-                final settings = GSettings('org.gnome.desktop.notifications.application',
-                path: '/org/gnome/desktop/notifications/application/org-gnome-terminal/');
-                var id = (await settings.get('application-id') as DBusString).value;
-                var enable = (await settings.get('enable') as DBusBoolean).value;
-                print('Notifications for $id: $enable');
+                var transaction = await _client.createTransaction();
+                var completer = Completer();
+                transaction.events.listen((event) {
+                  if (event is PackageKitRepositoryDetailEvent) {
+                    print('${event.enabled ? 'Enabled ' : 'Disabled'} ${event.repoId} ${event.description}');
+                  } else if (event is PackageKitErrorCodeEvent) {
+                    print('${event.code}: ${event.details}');
+                  } else if (event is PackageKitFinishedEvent) {
+                    completer.complete();
+                  }
+                });
+                await transaction.getRepositoryList();
+                await completer.future;
               },
-              child: const Text('Relocatable Schema'),
-            ),
-            ElevatedButton(
-              onPressed: () async {
-                var settings = GSettings('org.gnome.desktop.interface');
-                await settings.set('show-battery-percentage', const DBusBoolean(true));
-              },
-              child: const Text('Set'),
+              child: const Text('Repo List'),
             ),
           ],
         ),

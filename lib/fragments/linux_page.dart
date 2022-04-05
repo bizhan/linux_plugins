@@ -4,6 +4,7 @@ import 'package:linux_plugins/fragments/plugins/gsettings.dart';
 import 'package:linux_plugins/fragments/plugins/xdg_directories.dart';
 import 'package:linux_plugins/navigationDrawer/navigation_drawer.dart';
 import 'package:linux_plugins/fragments/plugins/fwupd.dart';
+import 'package:linux_plugins/fragments/plugins/packagekit.dart';
 
 class LinuxPage extends StatelessWidget {
   static const String routeName = '/linuxPage';
@@ -13,7 +14,7 @@ class LinuxPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
       return DefaultTabController(
-            length: 4,
+            length: 5,
             child: Scaffold(
               drawer: const NavigationDrawer(),
               appBar: AppBar(
@@ -23,6 +24,7 @@ class LinuxPage extends StatelessWidget {
                     Tab(text: 'Bluez'),
                     Tab(text: 'GSettings'),
                     Tab(text: 'XDG Directories'),
+                    Tab(text: 'Package Kit'),
                   ],
                 ),
                 title: const Text('Linux Specific'),
@@ -33,6 +35,7 @@ class LinuxPage extends StatelessWidget {
                   BluezPage(title: 'BlueZ'),
                   GSettingsPage(title: 'GSettings'),
                   XdgDirectoriesPage(title: 'XDG Directories'),
+                  PackagekitPage(title: 'Package Kit'),
                 ],
               ),
           ),
