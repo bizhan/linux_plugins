@@ -6,6 +6,7 @@ list(APPEND FLUTTER_PLUGIN_LIST
   battery_plus_windows
   connectivity_plus_windows
   flutter_libserialport
+  flutter_secure_storage_windows
   network_info_plus_windows
   url_launcher_windows
 )

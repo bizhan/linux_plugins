@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:linux_plugins/fragments/plugins/flutter_secure_storage.dart';
 import 'package:linux_plugins/navigationDrawer/navigation_drawer.dart';
 import 'package:linux_plugins/fragments/plugins/path_provider.dart';
 import 'package:linux_plugins/fragments/plugins/shared_preferences.dart';
@@ -13,12 +14,13 @@ class MiscPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
       return DefaultTabController(
-            length: 4,
+            length: 5,
             child: Scaffold(
               drawer: const NavigationDrawer(),
               appBar: AppBar(
                 bottom: const TabBar(
                   tabs: [
+                    Tab(text: 'Secure Storage'),
                     Tab(text: 'Path'),
                     Tab(text: 'Shared Preferences'),
                     Tab(text: 'URL Launcher'),
@@ -29,6 +31,7 @@ class MiscPage extends StatelessWidget {
               ),
               body: const TabBarView(
                 children: [
+                  SecureStorageWidget(),
                   PathProvider(),
                   SharedPreferencesPage(),
                   UrlLauncherPage(title: 'Url Launcher'),

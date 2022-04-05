@@ -9,6 +9,8 @@ PODS:
   - flutter_libserialport (0.0.1):
     - FlutterMacOS
     - libserialport
+  - flutter_secure_storage_macos (3.3.1):
+    - FlutterMacOS
   - FlutterMacOS (1.0.0)
   - libserialport (0.1.1)
   - network_info_plus_macos (0.0.1):
@@ -28,6 +30,7 @@ DEPENDENCIES:
   - connectivity_plus_macos (from `Flutter/ephemeral/.symlinks/plugins/connectivity_plus_macos/macos`)
   - device_info_plus_macos (from `Flutter/ephemeral/.symlinks/plugins/device_info_plus_macos/macos`)
   - flutter_libserialport (from `Flutter/ephemeral/.symlinks/plugins/flutter_libserialport/macos`)
+  - flutter_secure_storage_macos (from `Flutter/ephemeral/.symlinks/plugins/flutter_secure_storage_macos/macos`)
   - FlutterMacOS (from `Flutter/ephemeral`)
   - network_info_plus_macos (from `Flutter/ephemeral/.symlinks/plugins/network_info_plus_macos/macos`)
   - package_info_plus_macos (from `Flutter/ephemeral/.symlinks/plugins/package_info_plus_macos/macos`)
@@ -49,6 +52,8 @@ EXTERNAL SOURCES:
     :path: Flutter/ephemeral/.symlinks/plugins/device_info_plus_macos/macos
   flutter_libserialport:
     :path: Flutter/ephemeral/.symlinks/plugins/flutter_libserialport/macos
+  flutter_secure_storage_macos:
+    :path: Flutter/ephemeral/.symlinks/plugins/flutter_secure_storage_macos/macos
   FlutterMacOS:
     :path: Flutter/ephemeral
   network_info_plus_macos:
@@ -67,6 +72,7 @@ SPEC CHECKSUMS:
   connectivity_plus_macos: f6e86fd000e971d361e54b5afcadc8c8fa773308
   device_info_plus_macos: 1ad388a1ef433505c4038e7dd9605aadd1e2e9c7
   flutter_libserialport: d1a505fd4b05785f7b50cc7c93b361937ea1c5bd
+  flutter_secure_storage_macos: 6ceee8fbc7f484553ad17f79361b556259df89aa
   FlutterMacOS: 57701585bf7de1b3fc2bb61f6378d73bbdea8424
   libserialport: 1cb25e66ef3c92a8e59c2ea3820302c3fa2268cd
   network_info_plus_macos: d2b9e6c01c291449b91a584217aa53b113847dbd
