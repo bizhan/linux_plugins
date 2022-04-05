@@ -12,6 +12,8 @@ PODS:
   - flutter_secure_storage_macos (3.3.1):
     - FlutterMacOS
   - FlutterMacOS (1.0.0)
+  - geolocator_apple (1.2.0):
+    - FlutterMacOS
   - libserialport (0.1.1)
   - network_info_plus_macos (0.0.1):
     - FlutterMacOS
@@ -32,6 +34,7 @@ DEPENDENCIES:
   - flutter_libserialport (from `Flutter/ephemeral/.symlinks/plugins/flutter_libserialport/macos`)
   - flutter_secure_storage_macos (from `Flutter/ephemeral/.symlinks/plugins/flutter_secure_storage_macos/macos`)
   - FlutterMacOS (from `Flutter/ephemeral`)
+  - geolocator_apple (from `Flutter/ephemeral/.symlinks/plugins/geolocator_apple/macos`)
   - network_info_plus_macos (from `Flutter/ephemeral/.symlinks/plugins/network_info_plus_macos/macos`)
   - package_info_plus_macos (from `Flutter/ephemeral/.symlinks/plugins/package_info_plus_macos/macos`)
   - path_provider_macos (from `Flutter/ephemeral/.symlinks/plugins/path_provider_macos/macos`)
@@ -56,6 +59,8 @@ EXTERNAL SOURCES:
     :path: Flutter/ephemeral/.symlinks/plugins/flutter_secure_storage_macos/macos
   FlutterMacOS:
     :path: Flutter/ephemeral
+  geolocator_apple:
+    :path: Flutter/ephemeral/.symlinks/plugins/geolocator_apple/macos
   network_info_plus_macos:
     :path: Flutter/ephemeral/.symlinks/plugins/network_info_plus_macos/macos
   package_info_plus_macos:
@@ -74,6 +79,7 @@ SPEC CHECKSUMS:
   flutter_libserialport: d1a505fd4b05785f7b50cc7c93b361937ea1c5bd
   flutter_secure_storage_macos: 6ceee8fbc7f484553ad17f79361b556259df89aa
   FlutterMacOS: 57701585bf7de1b3fc2bb61f6378d73bbdea8424
+  geolocator_apple: 72a78ae3f3e4ec0db62117bd93e34523f5011d58
   libserialport: 1cb25e66ef3c92a8e59c2ea3820302c3fa2268cd
   network_info_plus_macos: d2b9e6c01c291449b91a584217aa53b113847dbd
   package_info_plus_macos: f010621b07802a241d96d01876d6705f15e77c1c

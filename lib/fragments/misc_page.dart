@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:linux_plugins/fragments/plugins/flutter_secure_storage.dart';
+import 'package:linux_plugins/fragments/plugins/geolocator.dart';
 import 'package:linux_plugins/fragments/plugins/google_sign_in.dart';
 import 'package:linux_plugins/navigationDrawer/navigation_drawer.dart';
 import 'package:linux_plugins/fragments/plugins/path_provider.dart';
@@ -14,7 +15,7 @@ class MiscPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
       return DefaultTabController(
-            length: 5,
+            length: 6,
             child: Scaffold(
               drawer: const NavigationDrawer(),
               appBar: AppBar(
@@ -25,6 +26,7 @@ class MiscPage extends StatelessWidget {
                     Tab(text: 'Shared Preferences'),
                     Tab(text: 'URL Launcher'),
                     Tab(text: 'Google Sign In'),
+                    Tab(text: 'Geolocator'),
                   ],
                 ),
                 title: const Text('Misc'),
@@ -36,6 +38,7 @@ class MiscPage extends StatelessWidget {
                   SharedPreferencesPage(),
                   UrlLauncherPage(title: 'Url Launcher'),
                   GoogleSignInPage(),
+                  GeolocatorWidget(),
                 ],
               ),
           ),
